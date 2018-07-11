@@ -15,6 +15,7 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
         crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@mapbox/leaflet-pip@latest/leaflet-pip.js"></script>
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 
@@ -70,15 +71,11 @@
                     </div>
                     <div class='row-sm-7'>
                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                        <label class="btn btn-secondary active">
-                            <input type="radio" name="options" id="option1" autocomplete="off" checked> Start
-                        </label>
-                        <label class="btn btn-secondary">
-                            <input type="radio" name="options" id="option2" autocomplete="off"> Guess
-                        </label>
-                        <label class="btn btn-secondary">
-                            <input type="radio" name="options" id="option3" autocomplete="off"> Quit
-                        </label>
+                       
+                            <button onclick="start()" type="button" class="btn btn-primary"> Start</button>
+                            <button onclick="guess()" type="button" class="btn btn-success"> Guess</button>
+                            <button onclick="quit()" type="button" class="btn btn-danger"> Quit</button>
+                        
                     </div>
                 </div>
                 
@@ -97,10 +94,8 @@
     </main>
 
 </body>
-<script src='geovermonter.js'></script>
+
 <script src='border.js'></script>
-<script>
-    initialize(border_data);
-</script>
+<script src='geovermonter.js'></script>
 
 </html>
