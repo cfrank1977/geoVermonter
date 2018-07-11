@@ -87,10 +87,13 @@ function getAddressFromLatLon() {
     document.getElementById('town').value = "?"
 }
 
+function moveNorth() {
+    let newrandlat = randLat + 0.0000050
+    console.log(newrandlat)
+    
+}
+
 initialize();
 
 
 
-{"place_id":"213562846","licence":"Data © OpenStreetMap contributors, ODbL 1.0. https:\/\/osm.org\/copyright","osm_type":"way","osm_id":"19684921",
-"lat":"42.7629925664301","lon":"-72.9443993906264","display_name":"592, Tunnel Street, Whitingham, Bennington County, Vermont, 05350, United 
-States of America","address":{"house_number":"592","road":"Tunnel Street","village":"Whitingham","county":"Bennington County","state":"Vermont","postcode":"05350","country":"United States of America","country_code":"us"},"boundingbox":["42.76289256643","42.76309256643","-72.944499390626","-72.944299390626"]}
