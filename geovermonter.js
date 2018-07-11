@@ -11,18 +11,8 @@ function initialize(border) {
         accessToken: 'pk.eyJ1IjoiY2ZyYW5rIiwiYSI6ImNqamVxdHdkdDFlZTIzcG9sY3B4N3BjdTQifQ.rLOdddfG8A4S-BWgcXj8dA'
     }).addTo(map);
 
-    let polydata = border.geometry.coordinates[0]
-
-    let fixedpolydata = polydata.map((elem) => {
-
-        let fixedcoords = [elem[1], elem[0]]
-        return fixedcoords
-
-    })
-
-    // create a red polygon from an array of LatLng points
-
-    var polygon = L.polygon(fixedpolydata, { color: 'red' }).addTo(map);
-    // zoom the map to the polygon
-    map.fitBounds(polygon.getBounds());
+  // create a red polygon from an array of LatLng points
+  let vermontBoarder = L.geoJSON(border_data)
+  vermontBoarder.addTo(map)
+ 
 }
