@@ -1,2 +1,6 @@
 
-#mapid { height: 350px; }
+#mapid { 
+    margin-top: 50px;
+    width: 90%;
+    height: 400px;
+ }
