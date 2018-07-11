@@ -12,14 +12,14 @@ function initialize() {
         accessToken: 'pk.eyJ1IjoiY2ZyYW5rIiwiYSI6ImNqamVxdHdkdDFlZTIzcG9sY3B4N3BjdTQifQ.rLOdddfG8A4S-BWgcXj8dA'
     }).addTo(map);
 
-  // create a red polygon from an array of LatLng points
-  
-  vermontBoarder.addTo(map)
+    // create a red polygon from an array of LatLng points
 
-  let startButton = document.getElementById('start')
-//   startButton.addEventListener('click', () => {
-//     start()
-//   })
+    vermontBoarder.addTo(map)
+
+    let startButton = document.getElementById('start')
+    //   startButton.addEventListener('click', () => {
+    //     start()
+    //   })
 }
 
 function start() {
@@ -51,14 +51,14 @@ function getRandomLatLonInVT() {
     randLat = getRandomCoords(bb.minLat, bb.maxLat)
     randLon = getRandomCoords(bb.minLon, bb.maxLon)
 
-       
 
-    let point = {lat: randLat, lon: randLon}
+
+    let point = { lat: randLat, lon: randLon }
     let inVermont = leafletPip.pointInLayer([randLon, randLat], vermontBoarder);
 
     if (inVermont.length == 0) {
         getRandomLatLonInVT()
-       }
+    }
     else {
         map.setView([point.lat, point.lon], 18);
         document.getElementById('lat').value = "?"
@@ -66,10 +66,10 @@ function getRandomLatLonInVT() {
         document.getElementById('county').value = "?"
         document.getElementById('town').value = "?"
         console.log(`Length of results: ${inVermont.length}`)
-        console.log({inVermont})
-        console.log({point})
+        console.log({ inVermont })
+        console.log({ point })
     }
-    
+
 }
 
 
@@ -83,14 +83,20 @@ function getAddressFromLatLon() {
     formatJson = '&format=json'
     addressURL = `${baseMapURL}${randLat}&lon=${randLon}&zoom=18&${formatJson}`
     console.log(addressURL)
-    document.getElementById('county').value = addressURL.address.county
-    document.getElementById('town').value = "?"
+    fetch(addressURL)
+        .then(function (result) {
+            return result.json()
+        })
+        .then(function (theResult) {
+            console.log(theResult)
+            showCountyAndVillage(theResult)
+        })
+}
+
+function showCountyAndVillage(theResult) {
+    document.getElementById('county').value = theResult.address.county
+    document.getElementById('town').value = theResult.address.road
 }
 
 initialize();
 
-
-
-{"place_id":"213562846","licence":"Data © OpenStreetMap contributors, ODbL 1.0. https:\/\/osm.org\/copyright","osm_type":"way","osm_id":"19684921",
-"lat":"42.7629925664301","lon":"-72.9443993906264","display_name":"592, Tunnel Street, Whitingham, Bennington County, Vermont, 05350, United 
-States of America","address":{"house_number":"592","road":"Tunnel Street","village":"Whitingham","county":"Bennington County","state":"Vermont","postcode":"05350","country":"United States of America","country_code":"us"},"boundingbox":["42.76289256643","42.76309256643","-72.944499390626","-72.944299390626"]}
