@@ -19,11 +19,10 @@ function initialize(border) {
         return fixedcoords
 
     })
-    
 
     // create a red polygon from an array of LatLng points
-console.log(fixedpolydata)
-    var polygon = L.polygon(fixedpolydata, {color: 'red'}).addTo(map);
+
+    var polygon = L.polygon(fixedpolydata, { color: 'red' }).addTo(map);
     // zoom the map to the polygon
-    map.fitBounds(polygon.getBounds());         
+    map.fitBounds(polygon.getBounds());
 }
