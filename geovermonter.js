@@ -56,6 +56,7 @@ function getRandomLatLonInVT() {
         getRandomLatLonInVT()
        }
     else {
+        map.setView([point.lat, point.lon], 18);
         console.log(`Length of results: ${inVermont.length}`)
         console.log({inVermont})
         console.log({point})
