@@ -1,5 +1,6 @@
 let vermontBoarder = L.geoJSON(border_data)
-
+let randLon
+let randLat
 function initialize() {
 
     map = L.map('mapid').setView([43.942425, -72.698704], 7);
@@ -31,6 +32,9 @@ function guess() {
 }
 
 function quit() {
+    document.getElementById('lat').value = randLat
+    document.getElementById('lon').value = randLon
+    getAddressFromLatLon()
     console.log('quit')
 }
 
@@ -44,8 +48,8 @@ function getRandomLatLonInVT() {
     };
 
     let bb = boundingBox;
-    let randLat = getRandomCoords(bb.minLat, bb.maxLat)
-    let randLon = getRandomCoords(bb.minLon, bb.maxLon)
+    randLat = getRandomCoords(bb.minLat, bb.maxLat)
+    randLon = getRandomCoords(bb.minLon, bb.maxLon)
 
        
 
@@ -73,4 +77,20 @@ function getRandomCoords(min, max) {
     return Math.random() * (max - min) + min;
 }
 
+function getAddressFromLatLon() {
+
+    baseMapURL = "https://nominatim.openstreetmap.org/reverse.php?format=html&lat=";
+    formatJson = '&format=json'
+    addressURL = `${baseMapURL}${randLat}&lon=${randLon}&zoom=18&${formatJson}`
+    console.log(addressURL)
+    document.getElementById('county').value = addressURL.address.county
+    document.getElementById('town').value = "?"
+}
+
 initialize();
+
+
+
+{"place_id":"213562846","licence":"Data © OpenStreetMap contributors, ODbL 1.0. https:\/\/osm.org\/copyright","osm_type":"way","osm_id":"19684921",
+"lat":"42.7629925664301","lon":"-72.9443993906264","display_name":"592, Tunnel Street, Whitingham, Bennington County, Vermont, 05350, United 
+States of America","address":{"house_number":"592","road":"Tunnel Street","village":"Whitingham","county":"Bennington County","state":"Vermont","postcode":"05350","country":"United States of America","country_code":"us"},"boundingbox":["42.76289256643","42.76309256643","-72.944499390626","-72.944299390626"]}
