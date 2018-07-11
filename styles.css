@@ -7,4 +7,19 @@
 
  #info {
      height: 250px;
+     margin-top: 50px;
  }
+
+#directionbtns {
+    margin-top: 20px;
+}
+#score {
+    height: 100px;
+    width: 100px;
+    display: flex;
+    align-content: flex-end;
+    margin-top: 100px;
+}
+.container {
+    width: 100%;
+}

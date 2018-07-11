@@ -57,25 +57,41 @@
                 <div class="col-sm-5" id='infoBtn'>
                     <div class='row-sm-5'>
                         <div id='info'>
-                            <p>some information here</p>
+                           
+                            Lat<input class="form-control" type="text" placeholder="Latitude" readonly>
+                            Lon<input class="form-control" type="text" placeholder="Longitude" readonly>
+                            County<input class="form-control" type="text" placeholder="County" readonly>
+                            Town<input class="form-control" type="text" placeholder="Town" readonly>
+                            <div id="score">
+                            <input class="form-control" type="text" placeholder="SCORE" readonly>
+                        </div>
                         </div>
                     </div>
-                    <div class='row-sm-7'></div>
+                    </div>
+                    <div class='row-sm-7'>
                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-secondary active">
-                            <input type="radio" name="options" id="option1" autocomplete="off" checked> Active
+                            <input type="radio" name="options" id="option1" autocomplete="off" checked> Start
                         </label>
                         <label class="btn btn-secondary">
-                            <input type="radio" name="options" id="option2" autocomplete="off"> Radio
+                            <input type="radio" name="options" id="option2" autocomplete="off"> Guess
                         </label>
                         <label class="btn btn-secondary">
-                            <input type="radio" name="options" id="option3" autocomplete="off"> Radio
+                            <input type="radio" name="options" id="option3" autocomplete="off"> Quit
                         </label>
                     </div>
                 </div>
-
+                
+            </div>
+            <div id="directionbtns">
+            <button type="button" class="btn btn-primary">North</button>
+            <button type="button" class="btn btn-primary">East</button>
+            <button type="button" class="btn btn-primary">South</button>
+            <button type="button" class="btn btn-primary">West</button>
             </div>
         </div>
+
+        
 
 
     </main>
