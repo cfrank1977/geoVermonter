@@ -57,6 +57,10 @@ function getRandomLatLonInVT() {
        }
     else {
         map.setView([point.lat, point.lon], 18);
+        document.getElementById('lat').value = "?"
+        document.getElementById('lon').value = "?"
+        document.getElementById('county').value = "?"
+        document.getElementById('town').value = "?"
         console.log(`Length of results: ${inVermont.length}`)
         console.log({inVermont})
         console.log({point})
