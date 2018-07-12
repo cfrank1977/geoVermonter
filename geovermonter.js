@@ -5,7 +5,13 @@ let point
 let value
 let countyDetailsJson
 
+
+
 function initialize() {
+    document.getElementById('north').disabled = true
+    document.getElementById('east').disabled = true
+    document.getElementById('west').disabled = true
+    document.getElementById('south').disabled = true
 
     map = L.map('mapid').setView([43.942425, -72.698704], 7);
 
@@ -20,19 +26,19 @@ function initialize() {
 
     vermontBoarder.addTo(map)
 
-    let startButton = document.getElementById('start')
-    //   startButton.addEventListener('click', () => {
-    //     start()
-    //   })
+   
 }
 
 function start() {
-    console.log('start')
+    document.getElementById('north').disabled = false
+    document.getElementById('east').disabled = false
+    document.getElementById('west').disabled = false
+    document.getElementById('south').disabled = false
     getRandomLatLonInVT()
+    getAddressFromLatLon()
 }
 
 function guess() {
-    getAddressFromLatLon()
     console.log('geuss')
 }
 
@@ -67,7 +73,7 @@ function getRandomLatLonInVT() {
         document.getElementById('lat').value = "?"
         document.getElementById('lon').value = "?"
         populateCountyDropdown()
-        document.getElementById('town').value = "?"
+        // document.getElementById('town').value = "?"
         console.log(`Length of results: ${inVermont.length}`)
         console.log({ inVermont })
         console.log({ point })
@@ -183,6 +189,7 @@ function populateCountyDropdown() {
             console.log({countyDetailsJson})
             if (currentCounty.toString() === countyDetailsJson) {
                 console.log('itworks')
+                alert("GOOD JOB! YOU GOT THE COUNTY CORRECT!")
             }
 
         })
