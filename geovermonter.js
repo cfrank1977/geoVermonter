@@ -2,6 +2,8 @@ let vermontBoarder = L.geoJSON(border_data)
 let randLon
 let randLat
 let point
+let value
+let countyDetailsJson
 
 function initialize() {
 
@@ -30,6 +32,7 @@ function start() {
 }
 
 function guess() {
+    getAddressFromLatLon()
     console.log('geuss')
 }
 
@@ -52,19 +55,18 @@ function getRandomLatLonInVT() {
     let bb = boundingBox;
     randLat = getRandomCoords(bb.minLat, bb.maxLat)
     randLon = getRandomCoords(bb.minLon, bb.maxLon)
-    console.log(randLat, randLon)
-    L.marker([randLat, randLon]).addTo(map);
+
     point = { lat: randLat, lon: randLon }
     let inVermont = leafletPip.pointInLayer([randLon, randLat], vermontBoarder);
-
     if (inVermont.length == 0) {
         getRandomLatLonInVT()
     }
     else {
         map.setView([point.lat, point.lon], 18);
+        L.marker([randLat, randLon]).addTo(map);
         document.getElementById('lat').value = "?"
         document.getElementById('lon').value = "?"
-        document.getElementById('county').value = "?"
+        populateCountyDropdown()
         document.getElementById('town').value = "?"
         console.log(`Length of results: ${inVermont.length}`)
         console.log({ inVermont })
@@ -89,40 +91,102 @@ function getAddressFromLatLon() {
             return result.json()
         })
         .then(function (theResult) {
-            console.log(theResult)
+            console.log({theResult})
             showCountyAndVillage(theResult)
+            
+            
         })
 }
 
 function moveNorth() {
+    value = document.getElementById('score').value
+    value--
+    document.getElementById('score').value = value
+    if (value == 0) {
+        document.getElementById('north').disabled = true
+        document.getElementById('east').disabled = true
+        document.getElementById('west').disabled = true
+        document.getElementById('south').disabled = true
+    }
     let newlatnorth = point.lat + 0.0050
     point.lat = newlatnorth
     console.log(newlatnorth)
     map.setView([newlatnorth, point.lon], 18);
 }
 function moveEast() {
+    value = document.getElementById('score').value
+    value--
+    document.getElementById('score').value = value
+    if (value == 0) {
+        document.getElementById('north').disabled = true
+        document.getElementById('east').disabled = true
+        document.getElementById('west').disabled = true
+        document.getElementById('south').disabled = true
+    }
     let newloneast = point.lon + 0.0050
     point.lon = newloneast
     console.log(newloneast)
     map.setView([point.lat, newloneast], 18)
 }
 function moveWest() {
+    value = document.getElementById('score').value
+    value--
+    document.getElementById('score').value = value
+    if (value == 0) {
+        document.getElementById('north').disabled = true
+        document.getElementById('east').disabled = true
+        document.getElementById('west').disabled = true
+        document.getElementById('south').disabled = true
+    }
     let newlonwest = point.lon - 0.0050
     point.lon = newlonwest
     console.log(newlonwest)
     map.setView([point.lat, newlonwest], 18)
 }
 function moveSouth() {
+    value = document.getElementById('score').value
+    value--
+    document.getElementById('score').value = value
+    if (value == 0) {
+        document.getElementById('north').disabled = true
+        document.getElementById('east').disabled = true
+        document.getElementById('west').disabled = true
+        document.getElementById('south').disabled = true
+    }
     newlatsouth = point.lat - 0.0050
     point.lat = newlatsouth
     console.log(newlatsouth)
     map.setView([newlatsouth, point.lon], 18)
 }
 
-
 function showCountyAndVillage(theResult) {
-    document.getElementById('county').value = theResult.address.county
+    console.log({theResult})
+    countyDetailsJson = theResult.address.county
+    console.log({countyDetailsJson})
     document.getElementById('town').value = theResult.address.road
+    document.getElementById('county').value = theResult.address.county
+}
+
+/*
+* Function populates Nav Bar dropdown list and adds event listener to each item
+* for on click to call get the restaurant details from its json file.
+*/
+function populateCountyDropdown() {
+    countyVTList = ['Addison County', 'Bennington County', 'Caledonia County', 'Chittenden County', 'Essex County', 'Franklin County', 'Grand isle County', 'Lamoille County', 'Orange County', 'Orleans County', 'Rutland County', 'Washington County', 'Windham County', 'Windsor County']
+    for (countyVT of countyVTList) {
+        let currentCounty = countyVT;
+        $('<a id="' + countyVT + '" class="dropdown-item" href="#">' + countyVT + '</a>').appendTo('#dynamicCountyList');
+        let countyLing = document.getElementById(currentCounty)
+
+        countyLing.addEventListener('click', () => {
+            console.log({currentCounty})
+            console.log({countyDetailsJson})
+            if (currentCounty.toString() === countyDetailsJson) {
+                console.log('itworks')
+            }
+
+        })
+    }
 }
 
 initialize();
