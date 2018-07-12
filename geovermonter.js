@@ -22,9 +22,8 @@ function initialize() {
         accessToken: 'pk.eyJ1IjoiY2ZyYW5rIiwiYSI6ImNqamVxdHdkdDFlZTIzcG9sY3B4N3BjdTQifQ.rLOdddfG8A4S-BWgcXj8dA'
     }).addTo(map);
 
-    // create a red polygon from an array of LatLng points
+    vermontBoarder.addTo(map)
 
-    vermontBoarder.addTo(map)  
 }
 
 function start() {
@@ -42,10 +41,6 @@ function start() {
     map.scrollWheelZoom.disable();
     map.boxZoom.disable();
     map.keyboard.disable();
-}
-
-function guess() {
-    console.log('geuss')
 }
 
 function quit() {
@@ -79,15 +74,9 @@ function getRandomLatLonInVT() {
         document.getElementById('lat').value = "?"
         document.getElementById('lon').value = "?"
         populateCountyDropdown()
-        // document.getElementById('town').value = "?"
-        console.log(`Length of results: ${inVermont.length}`)
-        console.log({ inVermont })
-        console.log({ point })
     }
 
 }
-
-
 
 function getRandomCoords(min, max) {
     return Math.random() * (max - min) + min;
@@ -104,10 +93,10 @@ function getAddressFromLatLon() {
             return result.json()
         })
         .then(function (theResult) {
-            console.log({theResult})
-            showCountyAndVillage(theResult)
-            
-            
+
+            setCountyJSONGlobal(theResult)
+
+
         })
 }
 
@@ -172,12 +161,9 @@ function moveSouth() {
     map.setView([newlatsouth, point.lon], 18)
 }
 
-function showCountyAndVillage(theResult) {
-    console.log({theResult})
+function setCountyJSONGlobal(theResult) {
     countyDetailsJson = theResult.address.county
-    console.log({countyDetailsJson})
-    document.getElementById('town').value = theResult.address.road
-    document.getElementById('county').value = theResult.address.county
+
 }
 
 /*
@@ -192,8 +178,11 @@ function populateCountyDropdown() {
         let countyLing = document.getElementById(currentCounty)
 
         countyLing.addEventListener('click', () => {
-            console.log({currentCounty})
-            console.log({countyDetailsJson})
+            console.log({ currentCounty })
+            console.log({ countyDetailsJson })
+            value = document.getElementById('score').value
+            value--
+            document.getElementById('score').value = value
             if (currentCounty.toString() === countyDetailsJson) {
                 console.log('itworks')
                 alert("GOOD JOB! YOU GOT THE COUNTY CORRECT!")
