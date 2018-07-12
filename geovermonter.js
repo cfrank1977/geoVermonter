@@ -1,6 +1,8 @@
 let vermontBoarder = L.geoJSON(border_data)
 let randLon
 let randLat
+let point
+
 function initialize() {
 
     map = L.map('mapid').setView([43.942425, -72.698704], 7);
@@ -12,14 +14,14 @@ function initialize() {
         accessToken: 'pk.eyJ1IjoiY2ZyYW5rIiwiYSI6ImNqamVxdHdkdDFlZTIzcG9sY3B4N3BjdTQifQ.rLOdddfG8A4S-BWgcXj8dA'
     }).addTo(map);
 
-  // create a red polygon from an array of LatLng points
-  
-  vermontBoarder.addTo(map)
+    // create a red polygon from an array of LatLng points
 
-  let startButton = document.getElementById('start')
-//   startButton.addEventListener('click', () => {
-//     start()
-//   })
+    vermontBoarder.addTo(map)
+
+    let startButton = document.getElementById('start')
+    //   startButton.addEventListener('click', () => {
+    //     start()
+    //   })
 }
 
 function start() {
@@ -50,15 +52,14 @@ function getRandomLatLonInVT() {
     let bb = boundingBox;
     randLat = getRandomCoords(bb.minLat, bb.maxLat)
     randLon = getRandomCoords(bb.minLon, bb.maxLon)
-
-       
-
-    let point = {lat: randLat, lon: randLon}
+    console.log(randLat, randLon)
+    L.marker([randLat, randLon]).addTo(map);
+    point = { lat: randLat, lon: randLon }
     let inVermont = leafletPip.pointInLayer([randLon, randLat], vermontBoarder);
 
     if (inVermont.length == 0) {
         getRandomLatLonInVT()
-       }
+    }
     else {
         map.setView([point.lat, point.lon], 18);
         document.getElementById('lat').value = "?"
@@ -66,10 +67,10 @@ function getRandomLatLonInVT() {
         document.getElementById('county').value = "?"
         document.getElementById('town').value = "?"
         console.log(`Length of results: ${inVermont.length}`)
-        console.log({inVermont})
-        console.log({point})
+        console.log({ inVermont })
+        console.log({ point })
     }
-    
+
 }
 
 
@@ -83,17 +84,46 @@ function getAddressFromLatLon() {
     formatJson = '&format=json'
     addressURL = `${baseMapURL}${randLat}&lon=${randLon}&zoom=18&${formatJson}`
     console.log(addressURL)
-    document.getElementById('county').value = addressURL.address.county
-    document.getElementById('town').value = "?"
+    fetch(addressURL)
+        .then(function (result) {
+            return result.json()
+        })
+        .then(function (theResult) {
+            console.log(theResult)
+            showCountyAndVillage(theResult)
+        })
 }
 
 function moveNorth() {
-    let newrandlat = randLat + 0.0000050
-    console.log(newrandlat)
-    
+    let newlatnorth = point.lat + 0.0050
+    point.lat = newlatnorth
+    console.log(newlatnorth)
+    map.setView([newlatnorth, point.lon], 18);
+}
+function moveEast() {
+    let newloneast = point.lon + 0.0050
+    point.lon = newloneast
+    console.log(newloneast)
+    map.setView([point.lat, newloneast], 18)
+}
+function moveWest() {
+    let newlonwest = point.lon - 0.0050
+    point.lon = newlonwest
+    console.log(newlonwest)
+    map.setView([point.lat, newlonwest], 18)
+}
+function moveSouth() {
+    newlatsouth = point.lat - 0.0050
+    point.lat = newlatsouth
+    console.log(newlatsouth)
+    map.setView([newlatsouth, point.lon], 18)
+}
+
+
+function showCountyAndVillage(theResult) {
+    document.getElementById('county').value = theResult.address.county
+    document.getElementById('town').value = theResult.address.road
 }
 
 initialize();
-
-
 

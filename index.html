@@ -62,7 +62,7 @@
                             Lat<input id="lat" class="form-control" type="text" placeholder="Latitude" readonly>
                             Lon<input id="lon" class="form-control" type="text" placeholder="Longitude" readonly>
                             County<input id="county" class="form-control" type="text" placeholder="County" readonly>
-                            Town<input id="town" class="form-control" type="text" placeholder="Town" readonly>
+                            Closest Road<input id="town" class="form-control" type="text" placeholder="Town" readonly>
                             <div id="score">
                             <input class="form-control" type="text" placeholder="SCORE" readonly>
                         </div>
@@ -82,9 +82,9 @@
             </div>
             <div id="directionbtns">
             <button onclick="moveNorth()" type="button" class="btn btn-primary">North</button>
-            <button type="button" class="btn btn-primary">East</button>
-            <button type="button" class="btn btn-primary">South</button>
-            <button type="button" class="btn btn-primary">West</button>
+            <button onclick="moveEast()" type="button" class="btn btn-primary">East</button>
+            <button onclick="moveSouth()" type="button" class="btn btn-primary">South</button>
+            <button onclick="moveWest()" type="button" class="btn btn-primary">West</button>
             </div>
         </div>
 
