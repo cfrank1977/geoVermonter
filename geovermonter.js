@@ -4,6 +4,7 @@ let randLat
 let point
 let value
 let countyDetailsJson
+let map
 
 
 
@@ -34,6 +35,13 @@ function start() {
     document.getElementById('south').disabled = false
     getRandomLatLonInVT()
     getAddressFromLatLon()
+    map.dragging.disable();
+    map.touchZoom.disable();
+    map.removeControl( map.zoomControl );
+    map.doubleClickZoom.disable();
+    map.scrollWheelZoom.disable();
+    map.boxZoom.disable();
+    map.keyboard.disable();
 }
 
 function quit() {
@@ -86,10 +94,10 @@ function getAddressFromLatLon() {
             return result.json()
         })
         .then(function (theResult) {
-        
+
             setCountyJSONGlobal(theResult)
-            
-            
+
+
         })
 }
 
@@ -171,8 +179,8 @@ function populateCountyDropdown() {
         let countyLing = document.getElementById(currentCounty)
 
         countyLing.addEventListener('click', () => {
-            console.log({currentCounty})
-            console.log({countyDetailsJson})
+            console.log({ currentCounty })
+            console.log({ countyDetailsJson })
             if (currentCounty.toString() === countyDetailsJson) {
                 console.log('itworks')
                 alert("GOOD JOB! YOU GOT THE COUNTY CORRECT!")
