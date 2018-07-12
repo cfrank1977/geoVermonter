@@ -4,7 +4,7 @@ let randLat
 let point
 let value
 let countyDetailsJson
-
+let map
 
 
 function initialize() {
@@ -24,9 +24,7 @@ function initialize() {
 
     // create a red polygon from an array of LatLng points
 
-    vermontBoarder.addTo(map)
-
-   
+    vermontBoarder.addTo(map)  
 }
 
 function start() {
@@ -37,6 +35,13 @@ function start() {
     document.getElementById('south').disabled = false
     getRandomLatLonInVT()
     getAddressFromLatLon()
+    map.dragging.disable();
+    map.touchZoom.disable();
+    map.removeControl( map.zoomControl );
+    map.doubleClickZoom.disable();
+    map.scrollWheelZoom.disable();
+    map.boxZoom.disable();
+    map.keyboard.disable();
 }
 
 function guess() {
@@ -81,6 +86,7 @@ function getRandomLatLonInVT() {
     }
 
 }
+
 
 
 function getRandomCoords(min, max) {
@@ -195,6 +201,7 @@ function populateCountyDropdown() {
 
         })
     }
+    
 }
 
 initialize();
