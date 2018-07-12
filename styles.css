@@ -1,4 +1,6 @@
-
+pre {
+    width: 700px;
+}
 #mapid { 
     margin-top: 50px;
     width: 90%;

@@ -30,6 +30,7 @@ function initialize() {
 }
 
 function start() {
+    document.getElementById('messagebox').textContent = 'What county are we in?'
     document.getElementById('north').disabled = false
     document.getElementById('east').disabled = false
     document.getElementById('west').disabled = false
