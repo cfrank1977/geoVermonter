@@ -1,6 +1,10 @@
 pre {
     width: 700px;
     height: 250px;
+    color: white;
+}
+p {
+    color: white;
 }
 #mapid { 
     margin-top: 50px;
@@ -22,6 +26,9 @@ pre {
     display: flex;
     align-content: flex-end;
     margin-top: 100px;
+    font-size: 60px;
+    text-align: center;
+    box-shadow: 5px 5px 5px black;
 }
 .container {
     width: 100%;
