@@ -1,13 +1,10 @@
-pre {
-    width: 700px;
-    height: 250px;
-}
+
 p {
     color: white;
 }
 #mapid { 
     margin-top: 50px;
-    height: 200px;
+    height: 40px !important;
  }
 
  #info {
