@@ -22,7 +22,8 @@ function initialize() {
         id: 'mapbox.satellite',
         accessToken: 'pk.eyJ1IjoiY2ZyYW5rIiwiYSI6ImNqamVxdHdkdDFlZTIzcG9sY3B4N3BjdTQifQ.rLOdddfG8A4S-BWgcXj8dA'
     }).addTo(map);
-
+    $("#mapid").height($(parent).height()).width($(parent).width());
+    map.invalidateSize();
     vermontBoarder.addTo(map)
     // countyData.addTo(map)
     

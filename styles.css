@@ -1,15 +1,9 @@
-pre {
-    width: 700px;
-    height: 250px;
-    color: white;
-}
 p {
     color: white;
 }
 #mapid { 
     margin-top: 50px;
-    width: 90%;
-    height: 400px;
+    height: 450px !important;
  }
 
  #info {
