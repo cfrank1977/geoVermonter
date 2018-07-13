@@ -1,107 +1,152 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <title>Geo Vermonter</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
-        crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
-        crossorigin=""></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-        crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/@mapbox/leaflet-pip@latest/leaflet-pip.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Geo Vermonter</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/grayscale.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+    crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
+    crossorigin=""></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@mapbox/leaflet-pip@latest/leaflet-pip.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 
-<body>
-    <main>
-        <div class='container'>
+<body id="page-top">
 
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">Geo Vermonter</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">Geo Vermonter</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
 
-            </nav>
-            <pre id="messagebox">This is a game where you try to guess the county you are in, 
-                and then the town. You start with a score 
-                of 20, for each time you scroll the map
-                 screen north, south, east or west you 
-                 are deducted 1 point. You are also deducted 
-                 one point whenever you guess the county or town wrong. 
-                 Hit start to be placed at a random point within Vermont.</pre>
+  </nav>
 
+
+  <!-- Header -->
+  <header class="masthead">
+    <div class="container d-flex h-100 align-items-center">
+      <div class="mx-auto text-center">
+        <h1 class="mx-auto my-0 text-uppercase">GeoVermonter</h1>
+        <pre id"messagebox">This is a game where you try to guess the county you are in, and then the town. You start with a score of 20, for
+          each time you scroll the map screen north, south, east or west you are deducted 1 point. You are also deducted
+          one point whenever you guess the county or town wrong. Hit start to be placed at a random point within Vermont.</h2>
+        <section id="projects" class="projects-section bg-light">
+          <div class="container">
             <div class='row'>
-                <div class="col-sm-7" id='mapid'>
+              <div class="col-sm-7" id='mapid'>
 
-                </div>
-                <div class="col-sm-5" id='infoBtn'>
-                    <div class='row-sm-5'>
-                        <div id='info'>
+              </div>
+              <div class="col-sm-5" id='infoBtn'>
+                <div class='row-sm-5'>
+                  <div id='info'>
 
-                            Lat
-                            <input id="lat" class="form-control" type="text" placeholder="Latitude" readonly>
-                             Lon
-                            <input id="lon" class="form-control" type="text" placeholder="Longitude" readonly>
-                            <ul class="navbar-nav mr-auto">
-                                    Vermont Counties
-                                <li class="nav-item dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
-                                        Select One
-                                    </button>
+                    Lat
+                    <input id="lat" class="form-control" type="text" placeholder="Latitude" readonly> Lon
+                    <input id="lon" class="form-control" type="text" placeholder="Longitude" readonly>
+                    <ul class="navbar-nav mr-auto">
+                      Vermont Counties
+                      <li class="nav-item dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true"
+                          aria-expanded="false">
+                          Select One
+                        </button>
 
-                                    <div class="dropdown-menu" id="dynamicCountyList" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu" id="dynamicCountyList" aria-labelledby="navbarDropdown">
 
-                                    </div>
-                                </li>
-
-                            </ul>
-                            <!-- Closest Road<input id="town" class="form-control" type="text" placeholder="Town" readonly> -->
-                            <div id="scorebox">
-                                <input class="form-control" type="text" value="20" id="score" readonly>
-                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class='row-sm-7'>
-                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                      </li>
 
-                        <button onclick="start()" type="button" class="btn btn-primary"> Start</button>
-                        <button onclick="quit()" type="button" class="btn btn-danger"> Quit</button>
-
+                    </ul>
+                    <!-- Closest Road<input id="town" class="form-control" type="text" placeholder="Town" readonly> -->
+                    <div id="scorebox">
+                      <input class="form-control" type="text" value="20" id="score" readonly>
                     </div>
+                  </div>
                 </div>
+              </div>
+              <div class='row-sm-7'>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+
+                  <button onclick="start()" type="button" class="btn btn-primary"> Start</button>
+                  <button onclick="quit()" type="button" class="btn btn-danger"> Quit</button>
+
+                </div>
+              </div>
 
             </div>
             <div id="directionbtns">
-                <button id="north" onclick="moveNorth()" type="button" class="btn btn-primary">North</button>
-                <button id="east" onclick="moveEast()" type="button" class="btn btn-primary">East</button>
-                <button id="south" onclick="moveSouth()" type="button" class="btn btn-primary">South</button>
-                <button id="west" onclick="moveWest()" type="button" class="btn btn-primary">West</button>
-                <button id="return"  onclick="goBackToOriginal()" type="button" class="btn btn-warning">Return</button>
+              <button id="north" onclick="moveNorth()" type="button" class="btn btn-primary">North</button>
+              <button id="east" onclick="moveEast()" type="button" class="btn btn-primary">East</button>
+              <button id="south" onclick="moveSouth()" type="button" class="btn btn-primary">South</button>
+              <button id="west" onclick="moveWest()" type="button" class="btn btn-primary">West</button>
+              <button id="return" onclick="goBackToOriginal()" type="button" class="btn btn-warning">Return</button>
             </div>
-                
-        </div>
+
+          </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- About Section -->
+
+  <!-- Projects Section -->
 
 
 
+  <!-- Footer -->
+  <footer class="bg-black small text-center text-white-50">
+    <div class="container">
+      Copyright &copy; Your Website 2018
+    </div>
+  </footer>
 
-    </main>
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/font-awesome/js/all.js"></script>
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/grayscale.min.js"></script>
+
+  <script src='border.js'></script>
+  <!-- <script src='vtcounties.js'></script> -->
+  <script src='geovermonter.js'></script>
+
 
 </body>
-
-<script src='border.js'></script>
-<!-- <script src='vtcounties.js'></script> -->
-<script src='geovermonter.js'></script>
 
 </html>
