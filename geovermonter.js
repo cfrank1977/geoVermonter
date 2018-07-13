@@ -1,11 +1,12 @@
 let vermontBoarder = L.geoJSON(border_data)
+// let countyData = L.geoJSON(county_data, {color: 'black'})
 let randLon
 let randLat
 let point
 let value
 let countyDetailsJson
 let map
-
+let original
 
 function initialize() {
     document.getElementById('north').disabled = true
@@ -23,7 +24,8 @@ function initialize() {
     }).addTo(map);
 
     vermontBoarder.addTo(map)
-
+    // countyData.addTo(map)
+    
 }
 
 function start() {
@@ -34,6 +36,8 @@ function start() {
     document.getElementById('south').disabled = false
     getRandomLatLonInVT()
     getAddressFromLatLon()
+    console.log(original)
+    console.log(point)
     map.dragging.disable();
     map.touchZoom.disable();
     map.removeControl( map.zoomControl );
@@ -48,6 +52,7 @@ function quit() {
     document.getElementById('lon').value = randLon
     getAddressFromLatLon()
     console.log('quit')
+    value = 20
 }
 
 function getRandomLatLonInVT() {
@@ -63,6 +68,7 @@ function getRandomLatLonInVT() {
     randLat = getRandomCoords(bb.minLat, bb.maxLat)
     randLon = getRandomCoords(bb.minLon, bb.maxLon)
 
+    original = { lat: randLat, lon: randLon }
     point = { lat: randLat, lon: randLon }
     let inVermont = leafletPip.pointInLayer([randLon, randLat], vermontBoarder);
     if (inVermont.length == 0) {
@@ -161,9 +167,13 @@ function moveSouth() {
     map.setView([newlatsouth, point.lon], 18)
 }
 
+function goBackToOriginal() {
+    map.setView([original.lat, original.lon], 18)
+}
+
+
 function setCountyJSONGlobal(theResult) {
     countyDetailsJson = theResult.address.county
-
 }
 
 /*
