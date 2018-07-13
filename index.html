@@ -56,96 +56,88 @@
   <header class="masthead">
     <div class="container d-flex h-100 align-items-center">
       <div class="mx-auto text-center">
-<section id="projects" class="projects-section">
-    <div class="container">
-      <p id='messagebox'>
-          This is a game where you try to guess the county you are in, and then the town. You start with a score of 20, for
-          each time you scroll the map screen north, south, east or west you are deducted 1 point. You are also deducted
-          one point whenever you guess the county or town wrong. Hit start to be placed at a random point within Vermont.
-      </p>
-      <div class='row'>
-        <div class="col-sm-10" id='mapid'>
+        <section id="projects" class="projects-section">
+          <div class="container">
+            <p id='messagebox'>
+              This is a game where you try to guess the county you are in, and then the town. You start with a score of 20, for each time
+              you scroll the map screen north, south, east or west you are deducted 1 point. You are also deducted one point
+              whenever you guess the county or town wrong. Hit start to be placed at a random point within Vermont.
+            </p>
+            <div class='row'>
+              <div class="col-sm-10" id='mapid'>
 
-        </div>
-        <div class="col-sm-2" id='infoBtn'>
-          <div class='row-sm-5'>
-            <div id='info'>
-
-              Lat
-              <input id="lat" class="form-control" type="text" placeholder="Latitude" readonly> Lon
-              <input id="lon" class="form-control" type="text" placeholder="Longitude" readonly>
-              <ul class="navbar-nav mr-auto">
-                Vermont Counties
-                <li class="nav-item dropdown">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
-                    Select One
-                  </button>
-
-                  <div class="dropdown-menu" id="dynamicCountyList" aria-labelledby="navbarDropdown">
-
-                  </div>
-                </li>
-
-              </ul>
-              <!-- Closest Road<input id="town" class="form-control" type="text" placeholder="Town" readonly> -->
-              <div id="scorebox">
-                <input class="form-control" type="text" value="20" id="score" readonly>
               </div>
+              <div class="col-sm-2" id='infoBtn'>
+                <div class='row-sm-5'>
+                  <div id='info'>
+
+                    Lat
+                    <input id="lat" class="form-control" type="text" placeholder="Latitude" readonly> Lon
+                    <input id="lon" class="form-control" type="text" placeholder="Longitude" readonly>
+
+                    <ul class="navbar-nav mr-auto">
+                      Vermont Counties
+                      <li class="nav-item dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true"
+                          aria-expanded="false">
+                          Select One
+                        </button>
+
+                        <div class="dropdown-menu" id="dynamicCountyList" aria-labelledby="navbarDropdown">
+
+                        </div>
+                      </li>
+
+                    </ul>
+
+                    <!-- Closest Road<input id="town" class="form-control" type="text" placeholder="Town" readonly> -->
+                    <div id="scorebox">
+                      <input class="form-control" type="text" value="20" id="score" readonly>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='row-sm-7'>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+
+                  <button onclick="start()" type="button" class="btn btn-primary"> Start</button>
+                  <button onclick="quit()" type="button" class="btn btn-danger"> Quit</button>
+
+                </div>
+              </div>
+
             </div>
+            <div id="directionbtns">
+              <button id="north" onclick="moveNorth()" type="button" class="btn btn-primary">North</button>
+              <button id="east" onclick="moveEast()" type="button" class="btn btn-primary">East</button>
+              <button id="south" onclick="moveSouth()" type="button" class="btn btn-primary">South</button>
+              <button id="west" onclick="moveWest()" type="button" class="btn btn-primary">West</button>
+              <button id="return" onclick="goBackToOriginal()" type="button" class="btn btn-warning">Return</button>
+            </div>
+
           </div>
-        </div>
-        <div class='row-sm-7'>
-          <div class="btn-group btn-group-toggle" data-toggle="buttons">
-
-            <button onclick="start()" type="button" class="btn btn-primary"> Start</button>
-            <button onclick="quit()" type="button" class="btn btn-danger"> Quit</button>
-
-          </div>
-        </div>
-
-      </div>
-      <div id="directionbtns">
-        <button id="north" onclick="moveNorth()" type="button" class="btn btn-primary">North</button>
-        <button id="east" onclick="moveEast()" type="button" class="btn btn-primary">East</button>
-        <button id="south" onclick="moveSouth()" type="button" class="btn btn-primary">South</button>
-        <button id="west" onclick="moveWest()" type="button" class="btn btn-primary">West</button>
-        <button id="return" onclick="goBackToOriginal()" type="button" class="btn btn-warning">Return</button>
-      </div>
-
-    </div>
       </div>
 
     </div>
   </header>
 
-  <!-- About Section -->
+  <!-- Footer -->
+  <footer class="bg-black small text-center text-white-50">
+    <div class="container">
+      Copyright &copy; Your Website 2018
+    </div>
+  </footer>
 
-  <!-- Projects Section -->
-  
+  <!-- Plugin JavaScript
+  <script src="vendor/font-awesome/js/all.js"></script>
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script> -->
 
+  <!-- Custom scripts for this template -->
+  <script src="js/grayscale.min.js"></script>
 
-    <!-- Footer -->
-    <footer class="bg-black small text-center text-white-50">
-      <div class="container">
-        Copyright &copy; Your Website 2018
-      </div>
-    </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="vendor/font-awesome/js/all.js"></script>
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for this template -->
-    <script src="js/grayscale.min.js"></script>
-
-    <script src='border.js'></script>
-    <!-- <script src='vtcounties.js'></script> -->
-    <script src='geovermonter.js'></script>
+  <script src='border.js'></script>
+  <!-- <script src='vtcounties.js'></script> -->
+  <script src='geovermonter.js'></script>
 
 
 </body>
