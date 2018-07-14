@@ -51,6 +51,7 @@ function start() {
 function quit() {
     document.getElementById('lat').value = randLat
     document.getElementById('lon').value = randLon
+    document.getElementById('county').value = countyDetailsJson
     getAddressFromLatLon()
     console.log('quit')
     value = 20
