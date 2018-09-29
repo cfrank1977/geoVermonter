@@ -26,9 +26,9 @@
   },
   "homepage": "https://github.com/BurlingtonCodeAcademy/geo-vermonter#readme",
   "devDependencies": {
-    "cypress": "^3.0.2",
     "@fortawesome/fontawesome-free": "^5.1.0",
-    "browser-sync": "2.24.5",
+    "browser-sync": "^2.24.7",
+    "cypress": "^3.1.0",
     "gulp": "^3.9.1",
     "gulp-clean-css": "3.9.4",
     "gulp-header": "2.0.5",
@@ -37,9 +37,10 @@
     "gulp-uglify": "3.0.0"
   },
   "dependencies": {
-    "bootstrap": "4.1.1",
+    "bootstrap": "^4.1.1",
     "font-awesome": "4.7.0",
     "jquery": "3.3.1",
-    "jquery.easing": "^1.4.1"
+    "jquery.easing": "^1.4.1",
+    "popper.js": "^1.14.4"
   }
 }
