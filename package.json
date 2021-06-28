@@ -28,7 +28,7 @@
   "devDependencies": {
     "cypress": "^3.8.3",
     "@fortawesome/fontawesome-free": "^5.12.0",
-    "browser-sync": "2.26.7",
+    "browser-sync": "2.27.3",
     "gulp": "^4.0.2",
     "gulp-clean-css": "4.2.0",
     "gulp-header": "2.0.9",
